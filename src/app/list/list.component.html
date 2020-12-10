@@ -1,0 +1,51 @@
+<div class="content">
+  <div class="left-content">
+    <div class="filter-container">
+      <div class="filter-section">
+        <h2 class="filter-title">Filters</h2>
+        <a href="javascript:void(0);" (click)="onClear()">Clear</a>
+      </div>
+      <form [formGroup]="form" class="form-wrapper">
+        <div class="align-center" *ngFor="let question of filters">
+          <p class="form-heading">{{question.displayName}}:</p>
+          <ng-container *ngFor="let val of question.value; let i = index">
+            <input id="{{question.name + i}}" type="radio" formControlName="{{question.name}}" value="{{val}}">
+            <label for="{{question.name + i}}">{{val}}</label>
+          </ng-container>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="right-content">
+    <progress *ngIf="isLoading" class="loading">Loading...</progress>
+    <div class="container">
+      <div class="cards" *ngFor="let article of articles; let i = index;">
+        <div class="card-item">
+          <div class="card-image-wrapper">
+            <picture>
+              <source media="(max-width:1200px)" srcset="{{article.links.mission_patch_small}}">
+              <img class="card-image" src="{{article.links.mission_patch}}" alt="{{article.mission_name}}">
+            </picture>
+          </div>
+          <div class="card-info">
+            <h2 class="card-title"><a href="javascript:void(0);"
+                title="{{article.mission_name}}">{{article.mission_name}}
+                #{{i + 1}}</a></h2>
+            <div class="card-intro">
+              <div *ngIf="article.mission_id && article.mission_id.length">
+                <p><strong>Mission Ids:</strong></p>
+                <ul>
+                  <li *ngFor="let id of article.mission_id">{{id}}</li>
+                </ul>
+              </div>
+              <p><strong>Launch Year: </strong> <span>{{article.launch_year}}</span></p>
+              <p><strong>Successful Launch: </strong> <span>{{article.launch_success}}</span></p>
+              <p><strong>Successful Landing: </strong> <span>{{article.rocket.first_stage.cores[0].land_success}}</span>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
