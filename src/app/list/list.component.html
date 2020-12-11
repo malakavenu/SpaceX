@@ -18,6 +18,7 @@
   </div>
   <div class="right-content">
     <progress *ngIf="isLoading" class="loading">Loading...</progress>
+    <p *ngIf="!(articles && articles.length)" class="no-results">No results</p>
     <div class="container">
       <div class="cards" *ngFor="let article of articles; let i = index;">
         <div class="card-item">
