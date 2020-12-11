@@ -8,10 +8,10 @@
       <form [formGroup]="form" class="form-wrapper">
         <div class="align-center" *ngFor="let question of filters">
           <p class="form-heading">{{question.displayName}}:</p>
-          <ng-container *ngFor="let val of question.value; let i = index">
+          <span *ngFor="let val of question.value; let i = index">
             <input id="{{question.name + i}}" type="radio" formControlName="{{question.name}}" value="{{val}}">
             <label for="{{question.name + i}}">{{val}}</label>
-          </ng-container>
+          </span>
         </div>
       </form>
     </div>

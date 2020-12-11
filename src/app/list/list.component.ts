@@ -17,7 +17,7 @@ export class ListComponent implements OnInit {
     {
       name: 'launch_year',
       displayName: "Launch Year",
-      value: []
+      value: ['2006','2007', '2008', '2009', '2010', '2011', '2012', '2013', '2014', '2015', '2016', '2017', '2018', '2019', '2020']
     },
     {
       name: 'launch_success',
@@ -56,8 +56,6 @@ export class ListComponent implements OnInit {
     this.dataService.getData(null).subscribe((data) => {
       this.isLoading = false;
       this.articles = data;
-      this.year_data = [...new Set(this.articles.map(item => item.launch_year))];
-      this.filters[0].value = this.year_data;
     });
   }
   onClear() {
