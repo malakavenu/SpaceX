@@ -183,7 +183,7 @@
 
 @media screen and (max-width: 1024px) {
   .content {
-    flex-direction: column;
+    flex-direction: row;
   }
 
   .left-content,
@@ -198,6 +198,14 @@
   .form-wrapper {
     max-width: 250px;
     margin: 0 auto;
+  }
+
+  .left-content {
+    width: 30%;
+  }
+
+  .right-content {
+    width: 70%;
   }
 }
 
